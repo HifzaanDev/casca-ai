@@ -14,10 +14,30 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// CORS configuration for microservices architecture
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: function (origin, callback) {
+      // Allow requests from the configured client URL
+      const allowedOrigins = [
+        process.env.CLIENT_URL,
+        'https://aicasca.click',
+        'http://localhost:5173' // for development
+      ];
+      
+      // Allow requests with no origin (like mobile apps or Postman)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log('CORS blocked origin:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
+    maxAge: 86400 // Cache preflight for 24 hours
   })
 );
 
@@ -36,6 +56,15 @@ const imagekit = new ImageKit({
   urlEndpoint: process.env.IMAGE_KIT_ENDPOINT,
   publicKey: process.env.IMAGE_KIT_PUBLIC_KEY,
   privateKey: process.env.IMAGE_KIT_PRIVATE_KEY,
+});
+
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "healthy", timestamp: new Date().toISOString() });
+});
+
+// Root health check for ALB (many LBs default to checking "/")
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "healthy", service: "casca-ai-backend" });
 });
 
 app.get("/api/upload", (req, res) => {
@@ -172,19 +201,28 @@ app.put("/api/chats/:id", ClerkExpressRequireAuth(), async (req, res) => {
   }
 });
 
+// Error handler middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(401).send("Unauthenticated!");
 });
 
-// PRODUCTION
-app.use(express.static(path.join(__dirname, "../client/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+// API endpoint not found handler
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found' });
 });
 
-app.listen(port, () => {
+// Root endpoint for backend service identification
+app.get('/', (req, res) => {
+  res.json({ 
+    service: 'CASCA AI Backend', 
+    status: 'running',
+    version: '1.0.0',
+    endpoints: ['/api/health', '/health', '/api/chats', '/api/userchats', '/api/upload']
+  });
+});
+
+app.listen(port, '0.0.0.0', () => {
   connect();
-  console.log("Server running on 3000");
+  console.log(`Server running on 0.0.0.0:${port}`);
 });
