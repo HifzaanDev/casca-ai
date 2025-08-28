@@ -6,6 +6,25 @@
 
 > **🚀 Experience Casca AI live at [aicasca.click](https://aicasca.click)**
 
+## 🎥 Project Walkthrough
+
+<div align="center">
+
+https://github.com/user-attachments/assets/demo-video.mp4
+
+</div>
+
+*👆 Watch me personally explain the architecture, features, and technical implementation of Casca AI in this comprehensive project walkthrough.*
+
+<details>
+<summary>📱 Can't see the video? Click here for alternative viewing options</summary>
+
+- **Direct Download**: [📥 Download Demo Video](./demo-video.mp4)
+- **File Location**: `./demo-video.mp4` in the project root
+- **Duration**: Full project walkthrough and technical deep-dive
+
+</details>
+
 A high-performance, production-ready generative AI chat application built with modern technologies and deployed on AWS with enterprise-grade infrastructure.
 
 ## ✨ Key Achievements
