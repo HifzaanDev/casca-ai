@@ -10,11 +10,11 @@
 
 <div align="center">
 
-https://github.com/user-attachments/assets/demo-video.mp4
+https://github.com/user-attachments/assets/YOUR_GITHUB_VIDEO_ID_HERE
+
+*👆 Watch me personally explain the architecture, features, and technical implementation of Casca AI*
 
 </div>
-
-*👆 Watch me personally explain the architecture, features, and technical implementation of Casca AI in this comprehensive project walkthrough.*
 
 <details>
 <summary>📱 Can't see the video? Click here for alternative viewing options</summary>
@@ -22,6 +22,7 @@ https://github.com/user-attachments/assets/demo-video.mp4
 - **Direct Download**: [📥 Download Demo Video](./demo-video.mp4)
 - **File Location**: `./demo-video.mp4` in the project root
 - **Duration**: Full project walkthrough and technical deep-dive
+- **Size**: 22MB
 
 </details>
 

@@ -60,6 +60,24 @@
     &::placeholder {
       color: #888;
     }
+
+    /* Prevent browser autofill from changing styles */
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 1000px #2c2937 inset !important;
+      -webkit-text-fill-color: #ececec !important;
+      background-color: transparent !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    /* Firefox autofill */
+    &:-moz-autofill {
+      background-color: transparent !important;
+      color: #ececec !important;
+      box-shadow: 0 0 0 1000px #2c2937 inset !important;
+    }
   }
 
   /* Style for upload button (label) */
