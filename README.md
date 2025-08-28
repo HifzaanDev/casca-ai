@@ -6,25 +6,9 @@
 
 > **🚀 Experience Casca AI live at [aicasca.click](https://aicasca.click)**
 
-## 🎥 Project Walkthrough
 
-<div align="center">
 
-https://github.com/user-attachments/assets/YOUR_GITHUB_VIDEO_ID_HERE
 
-*👆 Watch me personally explain the architecture, features, and technical implementation of Casca AI*
-
-</div>
-
-<details>
-<summary>📱 Can't see the video? Click here for alternative viewing options</summary>
-
-- **Direct Download**: [📥 Download Demo Video](./demo-video.mp4)
-- **File Location**: `./demo-video.mp4` in the project root
-- **Duration**: Full project walkthrough and technical deep-dive
-- **Size**: 22MB
-
-</details>
 
 A high-performance, production-ready generative AI chat application built with modern technologies and deployed on AWS with enterprise-grade infrastructure.
 
@@ -271,6 +255,24 @@ casca-ai/
 - `GET /api/chats/:id` - Get specific chat conversation
 - `PUT /api/chats/:id` - Update chat with new messages
 - `GET /api/upload` - Get ImageKit authentication parameters
+
+
+
+
+## 🎥 Project Walkthrough
+
+<div align="center">
+
+
+
+
+https://github.com/user-attachments/assets/6a008a38-d20b-44ab-a21e-5f4001af2214
+
+
+*👆 Watch me personally explain the architecture, features, and technical implementation of Casca AI*
+
+</div>
+
 
 ## 📱 Contact
 
